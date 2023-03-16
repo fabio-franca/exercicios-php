@@ -138,10 +138,9 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#parcelas').change(function(){
-                console.log("Passei");
+
                 var parcelas = $("#parcelas").val();
                 
-                console.log(parcelas);
                 if (parcelas > 12) {
                      $('#botao_gerar').attr("disabled", true);
                 } else {
