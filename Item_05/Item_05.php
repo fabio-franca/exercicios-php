@@ -23,14 +23,49 @@
     $quarta_dezena = rand(1, 99);
     $quinta_dezena = rand(1, 99);
     $sexta_dezena = rand(1, 99);
+
+    $dezenas = array($primeira_dezena);
+
+    while(in_array($segunda_dezena, $dezenas)) {
+        $segunda_dezena = rand(1,99);
+    } 
+
+    $dezenas = array($primeira_dezena, $segunda_dezena);
+
+    while(in_array($terceira_dezena, $dezenas)) {
+        $terceira_dezena = rand(1,99);
+    } 
+
+    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena);
+
+    while(in_array($quarta_dezena, $dezenas)) {
+        $quarta_dezena = rand(1,99);
+    } 
+
+    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena);
     
+    while(in_array($quinta_dezena, $dezenas)) {
+        $quinta_dezena = rand(1,99);
+    } 
+
+    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena, $quinta_dezena);
+
+    while(in_array($sexta_dezena, $dezenas)) {
+        $sexta_dezena = rand(1,99);
+    } 
+
+    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena, $quinta_dezena, $sexta_dezena);
+
     $resultado = "";
 
     if(isset($_POST["botao"])){
-        $resultado = "$primeira_dezena - $segunda_dezena - $terceira_dezena - $quarta_dezena - $quinta_dezena - $sexta_dezena";   
 ?>  
         <div class="row mt-3">
-            <h4 class="text-center text-success"><?=$resultado?></h4>
+            <?php     foreach($dezenas as $dados) { 
+                $resultado = "$dados ";
+            ?>
+             <h4 class="text-center text-success"><?=$resultado?></h4>
+             <?php }; ?>
         </div>
     </div>
 
