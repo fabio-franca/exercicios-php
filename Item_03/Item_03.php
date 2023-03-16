@@ -40,6 +40,7 @@
             $valor = number_format($valor,2,",",".");
             $parcelas = $_POST['parcelas'];
             $mes_extenso = '';
+            $ano_atual = 2023;
 	?>	
 			<div class="container-fluid col-md-10 offset-md-1 mt-4">
 				<table class="table table-hover table-bordered table-striped">
@@ -74,7 +75,7 @@
                                     break;
                         } ?>
 						<tr class="text-center">
-								<td><?=$mes_extenso?></td>
+								<td><?=$mes_extenso.'/'.$ano_atual?></td>
                                 <td><?=$mes_inicial?></td>
                                 <td><?=$valor?></td>
 						</tr>
