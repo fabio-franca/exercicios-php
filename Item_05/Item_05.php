@@ -23,9 +23,6 @@
     $quarta_dezena = rand(1, 99);
     $quinta_dezena = rand(1, 99);
     $sexta_dezena = rand(1, 99);
-
-    $array_dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena, $quinta_dezena, $sexta_dezena);
-    selection_sort($array_dezenas);
     
     $resultado = "";
 
