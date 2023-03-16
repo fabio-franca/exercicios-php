@@ -17,44 +17,25 @@
         </form>
 
 <?php
-    $primeira_dezena = rand(1,99);
-    $segunda_dezena = rand(1, 99);
-    $terceira_dezena = rand(1, 99);
-    $quarta_dezena = rand(1, 99);
-    $quinta_dezena = rand(1, 99);
-    $sexta_dezena = rand(1, 99);
+    $dezenas = [];
+    $quantidade = 0;
 
-    $dezenas = array($primeira_dezena);
+    do {
+        $dezena = rand(1,60);
 
-    while(in_array($segunda_dezena, $dezenas)) {
-        $segunda_dezena = rand(1,99);
-    } 
+        $flag = true;
 
-    $dezenas = array($primeira_dezena, $segunda_dezena);
+        for($i = 0; $i < count($dezenas); $i++) {
+            if($dezenas[$i] == $dezena) {
+                $flag = false;
+            }
+        };
 
-    while(in_array($terceira_dezena, $dezenas)) {
-        $terceira_dezena = rand(1,99);
-    } 
-
-    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena);
-
-    while(in_array($quarta_dezena, $dezenas)) {
-        $quarta_dezena = rand(1,99);
-    } 
-
-    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena);
-    
-    while(in_array($quinta_dezena, $dezenas)) {
-        $quinta_dezena = rand(1,99);
-    } 
-
-    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena, $quinta_dezena);
-
-    while(in_array($sexta_dezena, $dezenas)) {
-        $sexta_dezena = rand(1,99);
-    } 
-
-    $dezenas = array($primeira_dezena, $segunda_dezena, $terceira_dezena, $quarta_dezena, $quinta_dezena, $sexta_dezena);
+        if ($flag) {
+            $dezenas[] = $dezena;
+            $quantidade++;
+        };
+    } while($quantidade <= 5);
 
     $resultado = "";
 
