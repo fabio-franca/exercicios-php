@@ -31,7 +31,6 @@
 
     if(isset($_POST["botao"])){
         $resultado = "$primeira_dezena - $segunda_dezena - $terceira_dezena - $quarta_dezena - $quinta_dezena - $sexta_dezena";   
-        $resultado = sort($array_dezenas);
 ?>  
         <div class="row mt-3">
             <h4 class="text-center text-success"><?=$resultado?></h4>
