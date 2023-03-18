@@ -22,7 +22,7 @@
                 <div class="col-md-3">
                     <label for="control-label">Parcelas</label>
                     <input type="number" name="parcelas" class="form-control" id="parcelas" 
-                        placeholder="Máximo de 12 parcelas" required min="1" max="12"> 
+                        placeholder="Informe a quantidade" required min="1"> 
                </div>
             </div>
             <div class="row mt-4 justify-content-md-center">
@@ -41,49 +41,37 @@
             $parcelas = $_POST['parcelas'];
             $mes_extenso = '';
             $ano_atual = 2023;
+            $mes_inicial = 1;
 	?>	
 			<div class="container-fluid col-md-10 offset-md-1 mt-4">
 				<table class="table table-hover table-bordered table-striped">
                     <th class="text-center"> Data Vencimento </th>
                     <th class="text-center"> Número da Parcela </th>
                     <th class="text-center"> Valor Parcela </th>
-					<?php for($mes_inicial=1;$mes_inicial<=$parcelas;$mes_inicial++):
-                        switch ($mes_inicial) {
-                            case 1 : $mes_extenso = 'Janeiro';
-                                    break;
-                            case 2 : $mes_extenso = 'Fevereiro';
-                                    break;
-                            case 3 : $mes_extenso = 'Março';
-                                    break;
-                            case 4 : $mes_extenso = 'Abril';
-                                    break;
-                            case 5 : $mes_extenso = 'Maio';
-                                    break;
-                            case 6 : $mes_extenso = 'Junho';
-                                    break;
-                            case 7 : $mes_extenso = 'Julho';
-                                    break;
-                            case 8 : $mes_extenso = 'Agosto';
-                                    break;
-                            case 9 : $mes_extenso = 'Setembro';
-                                    break;
-                            case 10 : $mes_extenso = 'Outubro';
-                                    break;
-                            case 11 : $mes_extenso = 'Novembro';
-                                    break;
-                            case 12 : $mes_extenso = 'Dezembro';
-                                    break;
-                        } ?>
-						<tr class="text-center">
-								<td><?=$mes_extenso.'/'.$ano_atual?></td>
-                                <td><?=$mes_inicial?></td>
-                                <td><?=$valor?></td>
-						</tr>
-					<?php endfor; ?>
+					<?php for($mes=1;$mes<=$parcelas;$mes++){ ?>
+                      <?php  if ($mes_inicial > 12){ ?>  
+                        <?php    $mes_inicial = 1; ?> 
+                        <?php   ++$ano_atual; ?> 
+                       
+                            <tr class="text-center">
+                                <td><?=$mes_inicial.'/'.$ano_atual?></td>
+                                <td><?=$mes.'/'.$parcelas?></td>
+                                <td><?='R$ '.$valor?></td>
+                            </tr>
+                        <?php ++$mes_inicial; ?>
+                        <?php } else{  ?>
+                            <tr class="text-center">
+                                    <td><?=$mes_inicial.'/'.$ano_atual?></td>
+                                    <td><?=$mes.'/'.$parcelas?></td>
+                                    <td><?='R$ '.$valor?></td>
+                            </tr>
+                            <?php $mes_inicial++ ?>
+				    <?php } 
+                }?>
 				</table>
 			</div>
 
-	<?php  } else { ?>		
+	<?php } else { ?>		
 		<div class="col-md-6 offset-md-3">
 			<hr>
 			<div class="alert alert-warning" role="alert">
@@ -136,19 +124,5 @@
 		    });
 		});
 	</script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#parcelas').change(function(){
-
-                var parcelas = $("#parcelas").val();
-                
-                if (parcelas > 12) {
-                     $('#botao_gerar').attr("disabled", true);
-                } else {
-                    $('#botao_gerar').attr("disabled", false);
-                }
-            });
-        });
-    </script>
 </body>
 </html>
